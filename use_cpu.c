@@ -410,7 +410,7 @@ int main(int argc, char *argv[])
 		if (use_spin) {
 			struct timeval end;
 			int not_waiting = 1;
-			
+
 			end.tv_sec = now.tv_sec + 1;
 			end.tv_usec = time_per_sec;
 			gettimeofday(&now, NULL);
@@ -426,7 +426,7 @@ int main(int argc, char *argv[])
 			/* Now let everyone go when they wake up next */
 			spin_now = 1;
 		}
-		
+
 		for (i = 0; i <= pinfo->maxproc; i++) {
 			struct proc *p = &pinfo->procs[i];
 			unsigned int missed = p->missed_sched;
@@ -443,7 +443,7 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i <= pinfo->maxproc; i++)
 		pthread_join(pinfo->procs[i].thread, NULL);
-	
+
 	for (i = 0; i <= pinfo->maxproc; i++) {
 		if (pinfo->procs[i].missed_sched)
 			printf(" CPU %d: Missed scheduling %d times.\n",
