@@ -6,7 +6,7 @@ ifneq ($(STATIC),)
 endif
 
 use_cpu: use_cpu.c
-	$(CC) $< -o $@ $(LDLIBS) $(LDFLAGS)
+	$(CROSS_COMPILE)gcc $< -o $@ $(LDLIBS) $(LDFLAGS)
 
 clean:
 	rm -f use_cpu
